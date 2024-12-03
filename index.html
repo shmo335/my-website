@@ -26,6 +26,11 @@
                 console.error('Error loading Embedded Messaging: ', err);
             }
         };
+
+        embeddedservice_bootstrap.messaging.onChatEnded(() => {
+        // Code to show a custom feedback survey button
+            window.open('https://google.com', '_blank');
+        });
     </script>
     <script type='text/javascript' src='https://waterfall-espresso-4996.scratch.my.site.com/ESWAsahiServicePortalM1711933975688/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 </body>
