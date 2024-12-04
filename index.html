@@ -9,69 +9,25 @@
     <h1>Welcome to My Website</h1>
     <p>This is a simple HTML page to test Salesforce Messaging for Web with a locally stored JWT.</p>
 
-    <script type="text/javascript">
-        async function fetchJwt() {
-            try {
-                // Fetch the JWT from the local file
-                const response = await fetch('./shmo.jwt');
-                if (!response.ok) {
-                    throw new Error(`Failed to fetch JWT: ${response.statusText}`);
-                }
-                const token = await response.text(); // Read the JWT as plain text
-                return token.trim(); // Return the token, trimming whitespace
-            } catch (error) {
-                console.error('Error fetching JWT:', error);
-            }
-        }
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 
-        async function initEmbeddedMessagingWithJwt() {
-            const jwtToken = await fetchJwt(); // Get JWT from local file
-            if (!jwtToken) {
-                console.error('Failed to retrieve JWT.');
-                return;
-            }
+			embeddedservice_bootstrap.init(
+				'00DF3000000I3cX',
+				'Asahi_Service_Portal_Messaging',
+				'https://waterfall-espresso-4996.scratch.my.site.com/ESWAsahiServicePortalM1711933975688',
+				{
+					scrt2URL: 'https://waterfall-espresso-4996.scratch.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://waterfall-espresso-4996.scratch.my.site.com/ESWAsahiServicePortalM1711933975688/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
-            // Initialize Embedded Messaging
-            window.addEventListener("onEmbeddedMessagingReady", () => {
-                console.log("Received the onEmbeddedMessagingReady event.");
-
-                try {
-                    embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
-                        identityTokenType: "JWT",
-                        identityToken: jwtToken
-                    });
-                    console.log("Identity token sent to Salesforce.");
-                } catch (err) {
-                    console.error("Error sending identity token:", err);
-                }
-            });
-
-            initEmbeddedMessaging();
-        }
-
-        function initEmbeddedMessaging() {
-            try {
-                embeddedservice_bootstrap.settings.language = 'en_US';
-                embeddedservice_bootstrap.init(
-                    '00DF3000000I3cX',
-                    'Asahi_Service_Portal_Messaging',
-                    'https://waterfall-espresso-4996.scratch.my.site.com/ESWAsahiServicePortalM1711933975688',
-                    {
-                        scrt2URL: 'https://waterfall-espresso-4996.scratch.my.salesforce-scrt.com'
-                    }
-                );
-            } catch (err) {
-                console.error('Error loading Embedded Messaging:', err);
-            }
-        }
-
-        // Start the process
-        initEmbeddedMessagingWithJwt();
-    </script>
-
-    <script type="text/javascript" 
-        src="https://waterfall-espresso-4996.scratch.my.site.com/ESWAsahiServicePortalM1711933975688/assets/js/bootstrap.min.js" 
-        onload="initEmbeddedMessaging()">
-    </script>
 </body>
 </html>
