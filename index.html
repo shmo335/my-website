@@ -17,8 +17,8 @@
                 if (!response.ok) {
                     throw new Error(`Failed to fetch JWT: ${response.statusText}`);
                 }
-                const data = await response.json();
-                return data.token; // Return the token
+                const token = await response.text(); // Read the JWT as plain text
+                return token.trim(); // Return the token, trimming whitespace
             } catch (error) {
                 console.error('Error fetching JWT:', error);
             }
