@@ -13,7 +13,7 @@
         async function fetchJwt() {
             try {
                 // Fetch the JWT from the local file
-                const response = await fetch('./shmo.jwt');
+                const response = await fetch('./user1.jwt');
                 if (!response.ok) {
                     throw new Error(`Failed to fetch JWT: ${response.statusText}`);
                 }
