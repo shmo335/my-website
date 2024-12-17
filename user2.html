@@ -9,6 +9,9 @@
     <h1>Welcome to My Website</h1>
     <p>Website 2 </p>
 
+    <!-- Add a button to call the deleteSessionRequest -->
+    <button id="deleteButton">Delete Session</button>
+
     <script type="text/javascript">
         async function fetchJwt() {
             try {
@@ -64,7 +67,39 @@
                 console.error('Error loading Embedded Messaging:', err);
             }
         }
+
+        // Function to handle the DELETE request with the new URL
+        function deleteSessionRequest() {
+            const init = {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // Include any other headers required for authentication or authorization
+                },
+            };
+
+            const url = 'https://waterfall-espresso-4996.scratch.my.salesforce-scrt.com/iamessage/api/v2/conversation/0dwF30000001ewqIAA/session?esDeveloperName=Asahi_Service_Portal_Messaging';
+
+            fetch(url, init)
+                .then((response) => {
+                    return response.json(); // or .text() or .blob() ...
+                })
+                .then((text) => {
+                    // text is the response body
+                    console.log('Response:', text);
+                })
+                .catch((e) => {
+                    // error in e.message
+                    console.error('Error:', e.message);
+                });
+        }
+
+        // Attach event listener to the button to trigger deleteSessionRequest
+        document.getElementById("deleteButton").addEventListener("click", function() {
+            deleteSessionRequest();
+        });
     </script>
+
     <script type="text/javascript" 
         src="https://waterfall-espresso-4996.scratch.my.site.com/ESWAsahiServicePortalM1711933975688/assets/js/bootstrap.min.js" 
         onload="initEmbeddedMessagingWithJwt()">
