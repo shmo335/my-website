@@ -9,100 +9,41 @@
     <h1>Welcome to My Website</h1>
     <p>Website 2 </p>
 
-    <!-- Add a button to call the deleteSessionRequest -->
-    <button id="deleteButton">Delete Session</button>
+<script type='text/javascript'>
+  function initEmbeddedMessaging() {
+    try {
+      embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 
-    <script type="text/javascript">
-        async function fetchJwt() {
-            try {
-                // Fetch the JWT from the local file
-                const response = await fetch('./user2.jwt');
-                if (!response.ok) {
-                    throw new Error(`Failed to fetch JWT: ${response.statusText}`);
-                }
-                const token = await response.text(); // Read the JWT as plain text
-                return token.trim(); // Return the token, trimming whitespace
-            } catch (error) {
-                console.error('Error fetching JWT:', error);
-            }
-        }
+      embeddedservice_bootstrap.init(
+        '00DHy000000d8HT',
+        'Asahi_Service_Portal_Messaging',
+        'https://strawberry-trailblazer-8339.scratch.my.site.com/ESWAsahiServicePortalM1711933975688',
+        {
+          scrt2URL: 'https://strawberry-trailblazer-8339.scratch.my.salesforce-scrt.com'
+        }
+      );
+    } catch (err) {
+      console.error('Error loading Embedded Messaging: ', err);
+    }
+  };
 
-        async function initEmbeddedMessagingWithJwt() {
-            const jwtToken = await fetchJwt(); // Get JWT from local file
-            if (!jwtToken) {
-                console.error('Failed to retrieve JWT.');
-                return;
-            }
+    //Passing Web Context to Prechat - BEGIN
+      var ContactId = "n003F300001340xjIAA";
+      var AccountId = "001F300001k8g0yIAA";
 
-            // Initialize Embedded Messaging
-            window.addEventListener("onEmbeddedMessagingReady", () => {
-                console.log("Received the onEmbeddedMessagingReady event.");
+      window.addEventListener("onEmbeddedMessagingReady", e => {
+          //log event
+          console.log("onEmbeddedMessagingReady event triggered");
 
-                try {
-                    embeddedservice_bootstrap.userVerificationAPI.setIdentityToken({
-                        identityTokenType: "JWT",
-                        identityToken: jwtToken
-                    });
-                    console.log("Identity token sent to Salesforce.");
-                } catch (err) {
-                    console.error("Error sending identity token:", err);
-                }
-            });
+          //Set invisible prechat field
+          embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
+              "ContactId" : sContactId ,
+              "AccountId" : sAccountId 
+          });
+      });
 
-            initEmbeddedMessaging();
-        }
 
-        function initEmbeddedMessaging() {
-            try {
-                embeddedservice_bootstrap.settings.language = 'en_US';
-                embeddedservice_bootstrap.init(
-                    '00DF3000000I3cX',
-                    'Asahi_Service_Portal_Messaging',
-                    'https://waterfall-espresso-4996.scratch.my.site.com/ESWAsahiServicePortalM1711933975688',
-                    {
-                        scrt2URL: 'https://waterfall-espresso-4996.scratch.my.salesforce-scrt.com'
-                    }
-                );
-            } catch (err) {
-                console.error('Error loading Embedded Messaging:', err);
-            }
-        }
-
-        // Function to handle the DELETE request with the new URL
-        function deleteSessionRequest() {
-            const init = {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                    // Include any other headers required for authentication or authorization
-                },
-            };
-
-            const url = 'https://waterfall-espresso-4996.scratch.my.salesforce-scrt.com/iamessage/api/v2/conversation/0dwF30000001ewqIAA/session?esDeveloperName=Asahi_Service_Portal_Messaging';
-
-            fetch(url, init)
-                .then((response) => {
-                    return response.json(); // or .text() or .blob() ...
-                })
-                .then((text) => {
-                    // text is the response body
-                    console.log('Response:', text);
-                })
-                .catch((e) => {
-                    // error in e.message
-                    console.error('Error:', e.message);
-                });
-        }
-
-        // Attach event listener to the button to trigger deleteSessionRequest
-        document.getElementById("deleteButton").addEventListener("click", function() {
-            deleteSessionRequest();
-        });
-    </script>
-
-    <script type="text/javascript" 
-        src="https://waterfall-espresso-4996.scratch.my.site.com/ESWAsahiServicePortalM1711933975688/assets/js/bootstrap.min.js" 
-        onload="initEmbeddedMessaging()">
-    </script>
+</script>
+<script type='text/javascript' src='https://strawberry-trailblazer-8339.scratch.my.site.com/ESWAsahiServicePortalM1711933975688/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 </body>
 </html>
