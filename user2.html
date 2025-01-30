@@ -3,47 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-    <title>Salesforce Messaging with Local JWT</title>
+    <title>Salesforce Messaging</title>
 </head>
 <body>
-    <h1>Welcome to My Website</h1>
-    <p>Website 2 </p>
-
+    <h1>Welcome to a Sample External Website</h1>
+    <p>This is a simple HTML page with an embedded javascript chat window.</p>
 <script type='text/javascript'>
-  function initEmbeddedMessaging() {
-    try {
-      embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 
-      embeddedservice_bootstrap.init(
-        '00DF3000000I3cX',
-        'Asahi_Service_Portal_Messaging',
-        'https://waterfall-espresso-4996.scratch.my.site.com/ESWAsahiServicePortalM1711933975688',
-        {
-          scrt2URL: 'https://waterfall-espresso-4996.scratch.my.salesforce-scrt.com'
-        }
-      );
-    } catch (err) {
-      console.error('Error loading Embedded Messaging: ', err);
-    }
-  };
-
-    //Passing Web Context to Prechat - BEGIN
-      var ContactId = "n003F300001340xjIAA";
-      var AccountId = "001F300001k8g0yIAA";
-
-      window.addEventListener("onEmbeddedMessagingReady", e => {
-          //log event
-          console.log("onEmbeddedMessagingReady event triggered");
-
-          //Set invisible prechat field
-          embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
-              "ContactId" : sEmailAddress ,
-              "AccountId" : sExternalId 
-          });
-      });
-
+			embeddedservice_bootstrap.init(
+				'00D1m0000002dbd',
+				'CUB_Hybris_Service_Deployment',
+				'https://asahi-oc--dev2.sandbox.my.site.com/ESWCUBHybrisServiceDep1737517752507',
+				{
+					scrt2URL: 'https://asahi-oc--dev2.sandbox.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
 </script>
-<script type='text/javascript' src='https://waterfall-espresso-4996.scratch.my.site.com/ESWAsahiServicePortalM1711933975688/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
- 
+<script type='text/javascript' src='https://asahi-oc--dev2.sandbox.my.site.com/ESWCUBHybrisServiceDep1737517752507/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+
 </body>
 </html>
