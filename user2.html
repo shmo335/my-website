@@ -14,20 +14,31 @@
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 
 			embeddedservice_bootstrap.init(
-				'00D1m0000002dbd',
+				'00D1y0000004CoF',
 				'CUB_Hybris_Service_Deployment',
-				'https://asahi-oc--dev2.sandbox.my.site.com/ESWCUBHybrisServiceDep1737517752507',
+				'https://asahi-oc--tst2.sandbox.my.site.com/ESWCUBHybrisServiceDep1737691956273',
 				{
-					scrt2URL: 'https://asahi-oc--dev2.sandbox.my.salesforce-scrt.com'
+					scrt2URL: 'https://asahi-oc--tst2.sandbox.my.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
 			console.error('Error loading Embedded Messaging: ', err);
 		}
 	};
+	
+	//Passing Web Context to Prechat - BEGIN
+	window.addEventListener("onEmbeddedMessagingReady", e => {
+		//Set invisible prechat field
+		embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
+			"FirstName" : "<TO BE POPULATED>",
+			"LastName" : "<TO BE POPULATED>",
+			"Email" : "<TO BE POPULATED>",
+			"CUBSAPID" : "<TO BE POPULATED>",
+			"BusinessUnit" : "<TO BE POPULATED>"
+		});
+	});
+	//Passing Web Context to Prechat - END
 </script>
-<script type='text/javascript' src='https://asahi-oc--dev2.sandbox.my.site.com/ESWCUBHybrisServiceDep1737517752507/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
-
-
+<script type='text/javascript' src='https://asahi-oc--tst2.sandbox.my.site.com/ESWCUBHybrisServiceDep1737691956273/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 </body>
 </html>
