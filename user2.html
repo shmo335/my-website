@@ -30,7 +30,11 @@
 	window.addEventListener("onEmbeddedMessagingReady", e => {
 		//Set invisible prechat field
 		embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
-			"CUBSAPID" : "ID123456"
+			"CUBSAPID" : "ID123456",
+			"FirstName" : "FName",
+			"LastName" : "LName",
+			"Email" : "test@test.com",
+			"BusinessUnit" : "CUB"
 		});
 	});
 	//Passing Web Context to Prechat - END
