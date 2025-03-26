@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <title>Salesforce Messaging</title>
+</head>
+<body>
+    <h1>Welcome to a Sample External Website</h1>
+    <p>This is a simple HTML page with an embedded javascript chat window.</p>
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
@@ -23,9 +33,9 @@
 			"FirstName" : "fname", // to be populated by portal with first name of chat user
 			"LastName" : "lname", // to be populated by portal with last name of chat user
 			"Email" : "test@test.com", // to be populated by portal with email of chat user
-			"CUBSAPID" : "AccountNumber", // to be populated by portal with ECC id of Account
+			"CUBSAPID" : "CUB012345", // to be populated by portal with ECC id of Account
 			"BusinessUnit" : "bu", // to be populated by portal with business unit of chat user
-			"CUBOnlinePK" : "PK", // to be populated by portal with PK (primary key) of chat user to be used to match with a Salesforce Contact record
+			"CUBOnlinePK" : "ID123456", // to be populated by portal with PK (primary key) of chat user to be used to match with a Salesforce Contact record
 			"Venue" : "venue" // 	
 		});
 	});
@@ -33,3 +43,5 @@
 	
 </script>
 <script type='text/javascript' src='https://asahi-oc--tst2.sandbox.my.site.com/ESWCUBHybrisServiceDep1737691956273/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+</body>
+</html>
