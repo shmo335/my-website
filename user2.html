@@ -30,14 +30,17 @@
 	window.addEventListener("onEmbeddedMessagingReady", e => {
 		//Set invisible prechat field
 		embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
-			"CUBSAPID" : "ID123456",
-			"FirstName" : "FName",
-			"LastName" : "LName",
-			"Email" : "test@test.com",
-			"BusinessUnit" : "CUB"
+			"FirstName" : "fname", // to be populated by portal with first name of chat user
+			"LastName" : "lname", // to be populated by portal with last name of chat user
+			"Email" : "test@test.com", // to be populated by portal with email of chat user
+			"CUBSAPID" : "CUB012345", // to be populated by portal with ECC id of Account
+			"BusinessUnit" : "bu" // to be populated by portal with business unit of chat user
+			"CUBOnlinePK" : "ID123456" // to be populated by portal with PK (primary key) of chat user to be used to match with a Salesforce Contact record
+			"Venue" : "venue" // 	
 		});
 	});
 	//Passing Web Context to Prechat - END
+	
 </script>
 <script type='text/javascript' src='https://asahi-oc--tst2.sandbox.my.site.com/ESWCUBHybrisServiceDep1737691956273/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 </body>
