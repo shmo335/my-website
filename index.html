@@ -7,18 +7,18 @@
 </head>
 <body>
     <h1>Welcome to a Sample External Website</h1>
-    <p>This is a simple HTML page with an embedded javascript chat window.</p>
+    <p>This is a simple HTML page with an embedded javascript chat window as an Employee.</p>
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
 
 			embeddedservice_bootstrap.init(
-				'00D1m0000002dbd',
+				'00D1y0000004CoF',
 				'CUB_Hybris_Service_Deployment',
-				'https://asahi-oc--dev2.sandbox.my.site.com/ESWCUBHybrisServiceDep1737517752507',
+				'https://asahi-oc--tst2.sandbox.my.site.com/ESWCUBHybrisServiceDep1737691956273',
 				{
-					scrt2URL: 'https://asahi-oc--dev2.sandbox.my.salesforce-scrt.com'
+					scrt2URL: 'https://asahi-oc--tst2.sandbox.my.salesforce-scrt.com'
 				}
 			);
 		} catch (err) {
@@ -27,19 +27,23 @@
 	};
 	
 	//Passing Web Context to Prechat - BEGIN
-	// window.addEventListener("onEmbeddedMessagingReady", e => {
-	// 	//Set invisible prechat field
-	// 	embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
-	// 		"FirstName" : "<TO BE POPULATED>",
-	// 		"LastName" : "<TO BE POPULATED>",
-	// 		"Email" : "<TO BE POPULATED>",
-	// 		"CUBSAPID" : "<TO BE POPULATED>",
-	// 		"BusinessUnit" : "<TO BE POPULATED>"
-	// 	});
-	// });
+	window.addEventListener("onEmbeddedMessagingReady", e => {
+		//Set invisible prechat field
+		embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({
+			"FirstName" : "fname", // to be populated by portal with first name of chat user
+			"LastName" : "lname", // to be populated by portal with last name of chat user
+			"Email" : "test@asahibeverages.com", // to be populated by portal with email of chat user
+			"CUBSAPID" : "CUB012345", // to be populated by portal with ECC id of Account
+			"BusinessUnit" : "bu" // to be populated by portal with business unit of chat user
+			"CUBOnlinePK" : "ID987654" // to be populated by portal with PK (primary key) of chat user to be used to match with a Salesforce Contact record
+			"Venue" : "venue" // 	
+		});
+	});
 	//Passing Web Context to Prechat - END
+	
 </script>
-<script type='text/javascript' src='https://asahi-oc--dev2.sandbox.my.site.com/ESWCUBHybrisServiceDep1737517752507/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://asahi-oc--tst2.sandbox.my.site.com/ESWCUBHybrisServiceDep1737691956273/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
 
 </body>
 </html>
