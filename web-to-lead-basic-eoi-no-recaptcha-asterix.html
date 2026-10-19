@@ -1,0 +1,377 @@
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: Please add the following <META> element to your page <HEAD>.      -->
+<!--  If necessary, please modify the charset parameter to specify the        -->
+<!--  character set of your HTML page.                                        -->
+<!--  ----------------------------------------------------------------------  -->
+
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<style>
+   .req { color: #c0392b; font-weight: bold; }
+</style>
+
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: Please add the following <FORM> element to your page.             -->
+<!--  ----------------------------------------------------------------------  -->
+
+<form
+   action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00D9j00000DhCo1"
+   method="POST"
+>
+   <input type="hidden" name="oid" value="00D9j00000DhCo1" />
+   <input type="hidden" name="retURL" value="https://amplarhealth.com.au/" />
+
+   <!--  ----------------------------------------------------------------------  -->
+   <!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
+   <!--  these lines if you wish to test in debug mode.                          -->
+   <!--  <input type="hidden" name="debug" value=1>                              -->
+   <!--  <input type="hidden" name="debugEmail"                                  -->
+   <!--  value="steven.moalaeua@medibank.com.au">                                -->
+   <!--  ----------------------------------------------------------------------  -->
+
+   <p><span class="req" aria-hidden="true">*</span> Required field</p>
+
+   <label for="first_name">First Name <span class="req" aria-hidden="true">*</span></label
+   ><input
+      id="first_name"
+      maxlength="40"
+      name="first_name"
+      size="20"
+      type="text"
+      required
+   /><br />
+
+   <label for="last_name">Last Name <span class="req" aria-hidden="true">*</span></label
+   ><input
+      id="last_name"
+      maxlength="80"
+      name="last_name"
+      size="20"
+      type="text"
+      required
+   /><br />
+
+   <label for="email">Email <span class="req" aria-hidden="true">*</span></label
+   ><input
+      id="email"
+      maxlength="80"
+      name="email"
+      size="20"
+      type="text"
+      required
+   /><br />
+
+   <label for="phone">Phone</label
+   ><input id="phone" maxlength="40" name="phone" size="20" type="text" /><br />
+
+   <label for="mobile">Mobile <span class="req" aria-hidden="true">*</span></label
+   ><input
+      id="mobile"
+      maxlength="40"
+      name="mobile"
+      size="20"
+      type="text"
+      required
+   /><br />
+
+   <label for="street">Street <span class="req" aria-hidden="true">*</span></label
+   ><textarea id="street" name="street" required></textarea><br />
+
+   <label for="city">City <span class="req" aria-hidden="true">*</span></label
+   ><input
+      id="city"
+      maxlength="40"
+      name="city"
+      size="20"
+      type="text"
+      required
+   /><br />
+
+   <label for="state">State/Province <span class="req" aria-hidden="true">*</span></label
+   ><input
+      id="state"
+      maxlength="20"
+      name="state"
+      size="20"
+      type="text"
+      required
+   /><br />
+
+   <label for="zip">Zip <span class="req" aria-hidden="true">*</span></label
+   ><input
+      id="zip"
+      maxlength="20"
+      name="zip"
+      size="20"
+      type="text"
+      required
+   /><br />
+
+   <!--  Country: hidden, defaulted to Australia  -->
+   <input id="country" name="country" type="hidden" value="Australia" />
+
+   <label for="lead_source">Lead Source</label
+   ><select id="lead_source" name="lead_source">
+      <option value="">--None--</option>
+      <option value="Advertisement">Advertisement</option>
+      <option value="Customer Event">Customer Event</option>
+      <option value="Employee Referral">Employee Referral</option>
+      <option value="External Referral">External Referral</option>
+      <option value="Google AdWords">Google AdWords</option>
+      <option value="Partner">Partner</option>
+      <option value="Purchased List">Purchased List</option>
+      <option value="Trade Show">Trade Show</option>
+      <option value="Webinar">Webinar</option>
+      <option value="Website">Website</option>
+      <option value="Friend or family">Friend or family</option>
+      <option value="GP/practice nurse">GP/practice nurse</option>
+      <option value="Healthcare team">Healthcare team</option>
+      <option value="Google search">Google search</option>
+      <option value="Amplar health website​">Amplar health website​</option>
+      <option value="My aged care website">My aged care website</option>
+      <option value="Email​">Email​</option>
+      <option value="Social media">Social media</option>
+      <option value="Event">Event</option>
+      <option value="Hospital discharge planner/liaison">
+         Hospital discharge planner/liaison
+      </option>
+      <option value="Other">Other</option></select
+   ><br />
+
+   <!--  Lead Record Type: hidden, defaulted to Support at Home  -->
+   <input id="recordType" name="recordType" type="hidden" value="0129j000004oj2r" />
+
+   <!--  Mobile Country Code: hidden, defaulted to AU (Australia)  -->
+   <input
+      id="00NQE00000HVpuM"
+      name="00NQE00000HVpuM"
+      type="hidden"
+      value="AU"
+   />
+
+   Enquiry Source <span class="req" aria-hidden="true">*</span>:<select
+      id="00N9j00000QY1Ir"
+      name="00N9j00000QY1Ir"
+      title="Enquiry Source"
+      required
+   >
+      <option value="">--None--</option>
+      <option value="Looking for support for myself">
+         Looking for support for myself
+      </option>
+      <option value="Helping someone else find support">
+         Helping someone else find support
+      </option></select
+   ><br />
+
+   Enquiry Contact for this enquiry? <span class="req" aria-hidden="true">*</span>:<select
+      id="00N9j00000QY1nV"
+      name="00N9j00000QY1nV"
+      title="Enquiry Contact for this enquiry?"
+      required
+   >
+      <option value="">--None--</option>
+      <option value="The person needing support">
+         The person needing support
+      </option>
+      <option value="Their family member, carer or representative">
+         Their family member, carer or representative
+      </option>
+      <option value="Either person">Either person</option></select
+   ><br />
+
+   Enquiry Contact First Name:<input
+      id="00N9j00000QY2Jl"
+      maxlength="255"
+      name="00N9j00000QY2Jl"
+      size="20"
+      type="text"
+   /><br />
+
+   Enquiry Contact Relationship to person:<select
+      id="00N9j00000QY2Zt"
+      name="00N9j00000QY2Zt"
+      title="Enquiry Contact Relationship to person"
+   >
+      <option value="">--None--</option>
+      <option value="Spouse / Partner">Spouse / Partner</option>
+      <option value="Other family Member">Other family Member</option>
+      <option value="Friend">Friend</option>
+      <option value="Informal Carer">Informal Carer</option>
+      <option value="Guardian / Representative">
+         Guardian / Representative
+      </option>
+      <option value="Support Coordinator / Case Manager">
+         Support Coordinator / Case Manager
+      </option>
+      <option value="Health Professional">Health Professional</option>
+      <option value="Other">Other</option></select
+   ><br />
+
+   Enquiry Contact Phone Number:<input
+      id="00N9j00000QY0lc"
+      maxlength="40"
+      name="00N9j00000QY0lc"
+      size="20"
+      type="text"
+   /><br />
+
+   Enquiry Contact Email:<input
+      id="00N9j00000QXr97"
+      maxlength="80"
+      name="00N9j00000QXr97"
+      size="20"
+      type="text"
+   /><br />
+
+   Which best describes your situation now? <span class="req" aria-hidden="true">*</span>:<select
+      id="00N9j00000QY3Cb"
+      name="00N9j00000QY3Cb"
+      title="Which best describes your situation now?"
+      required
+   >
+      <option value="">--None--</option>
+      <option value="Just exploring options">Just exploring options</option>
+      <option value="Would like help understanding eligibility and funding">
+         Would like help understanding eligibility and funding
+      </option>
+      <option value="Waiting for assessment or funding approval">
+         Waiting for assessment or funding approval
+      </option>
+      <option value="Funding approved and ready to start services">
+         Funding approved and ready to start services
+      </option>
+      <option
+         value="Currently receiving services and considering a new provider"
+      >
+         Currently receiving services and considering a new provider
+      </option>
+      <option value="Not sure">Not sure</option></select
+   ><br />
+
+   Anything we should know before we call?:<textarea
+      id="00N9j00000QY3HR"
+      name="00N9j00000QY3HR"
+      rows="3"
+      type="text"
+      wrap="soft"
+   ></textarea
+   ><br />
+
+   Preferred Contact Method:<select
+      id="00N9j00000QY3MH"
+      name="00N9j00000QY3MH"
+      title="Preferred Contact Method"
+   >
+      <option value="">--None--</option>
+      <option value="Mobile phone">Mobile phone</option>
+      <option value="Landline">Landline</option>
+      <option value="Email">Email</option></select
+   ><br />
+
+   Preferred Contact Time:<select
+      id="00N9j00000QXx3y"
+      name="00N9j00000QXx3y"
+      title="Preferred Contact Time"
+   >
+      <option value="">--None--</option>
+      <option value="Morning">Morning</option>
+      <option value="Afternoon">Afternoon</option>
+      <option value="Evening">Evening</option></select
+   ><br />
+
+   Current Marketing Consent:<input
+      id="00N9j00000QY7g1"
+      name="00N9j00000QY7g1"
+      type="checkbox"
+      value="1"
+   /><br />
+
+   Privacy Consent EOI <span class="req" aria-hidden="true">*</span>:<input
+      id="00N9j00000QXYTY"
+      name="00N9j00000QXYTY"
+      type="checkbox"
+      value="1"
+      required
+   /><br />
+
+   Date of birth:<span class="dateInput dateOnlyInput"
+      ><input
+         id="00N9j00000QY9Uv"
+         name="00N9j00000QY9Uv"
+         size="12"
+         type="text" /></span
+   ><br />
+
+   Lead Source Other detail:<input
+      id="00N9j00000QYHKP"
+      maxlength="255"
+      name="00N9j00000QYHKP"
+      size="20"
+      type="text"
+   /><br />
+
+   Lead Source Name of event:<input
+      id="00N9j00000QYIoL"
+      maxlength="255"
+      name="00N9j00000QYIoL"
+      size="20"
+      type="text"
+   /><br />
+
+   Lead Source Name of Clinic:<input
+      id="00N9j00000QYItB"
+      maxlength="255"
+      name="00N9j00000QYItB"
+      size="20"
+      type="text"
+   /><br />
+
+   Lead Source Name of Channel:<input
+      id="00N9j00000QYJIz"
+      maxlength="255"
+      name="00N9j00000QYJIz"
+      size="20"
+      type="text"
+   /><br />
+
+   Lead Source Name of team:<input
+      id="00N9j00000QXtgI"
+      maxlength="255"
+      name="00N9j00000QXtgI"
+      size="20"
+      type="text"
+   /><br />
+
+   Source:<select id="00N9j00000Qhjm5" name="00N9j00000Qhjm5" title="Source">
+      <option value="">--None--</option>
+      <option value="Health Professional">Health Professional</option>
+      <option value="EOI">EOI</option></select
+   ><br />
+
+   Enquiry Contact Last Name:<input
+      id="00N9j00000QjicD"
+      maxlength="255"
+      name="00N9j00000QjicD"
+      size="20"
+      type="text"
+   /><br />
+
+   How will the support be funded? <span class="req" aria-hidden="true">*</span>:<select
+      id="00N9j00000QY2ur"
+      multiple="multiple"
+      name="00N9j00000QY2ur"
+      title="How will the support be funded?"
+      required
+   >
+      <option value="Support at Home (previously Home Care Package)">
+         Support at Home (previously Home Care Package)
+      </option>
+      <option value="Commonwealth Home Support Programme (CHSP)">
+         Commonwealth Home Support Programme (CHSP)
+      </option>
+      <option value="Self-funded">Self-funded</option>
+      <option value="Not sure">Not sure</option></select
+   ><br />
+
+   <input type="submit" name="submit" />
+</form>
