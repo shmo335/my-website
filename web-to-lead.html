@@ -1,42 +1,162 @@
-<!--  ----------------------------------------------------------------------  -->
-<!--  NOTE: Please add the following <META> element to your page <HEAD>.      -->
-<!--  If necessary, please modify the charset parameter to specify the        -->
-<!--  character set of your HTML page.                                        -->
-<!--  ----------------------------------------------------------------------  -->
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support at Home enquiry</title>
+<style>
+:root {
+  --ink: #1c2630;
+  --muted: #566272;
+  --line: #d5dce4;
+  --control-line: #7d8a9a;
+  --bg: #f2f5f8;
+  --card: #ffffff;
+  --brand: #22466b;
+  --brand-dark: #173452;
+  --focus: #1a73c8;
+  --error: #b3261e;
+}
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 17px/1.5 -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.page { max-width: 760px; margin: 0 auto; padding: 32px 16px 56px; }
 
-<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+.masthead { padding: 0 4px 24px; }
+.masthead h1 { margin: 0 0 8px; font-size: 1.9rem; line-height: 1.2; color: var(--brand); font-weight: 650; }
+.masthead p { margin: 0 0 8px; max-width: 60ch; }
+.masthead .note { color: var(--muted); font-size: .9rem; }
 
-<!--  ----------------------------------------------------------------------  -->
-<!--  NOTE: Please add the following <FORM> element to your page.             -->
-<!--  ----------------------------------------------------------------------  -->
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 8px 32px 32px;
+  box-shadow: 0 1px 2px rgba(20, 40, 60, .06);
+}
+section { padding: 28px 0; border-bottom: 1px solid var(--line); }
+section:first-of-type { padding-top: 24px; }
+section h2 { margin: 0 0 4px; font-size: 1.2rem; line-height: 1.3; color: var(--brand); font-weight: 650; }
+.intro { margin: 0 0 4px; color: var(--muted); font-size: .95rem; max-width: 62ch; }
+.grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px 20px; margin-top: 16px; }
+.c2 { grid-column: span 2; } .c3 { grid-column: span 3; } .c6 { grid-column: span 6; }
+.field { min-width: 0; }
 
-<form action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00D9j00000DhCo1" method="POST">
+label, legend { display: block; font-weight: 600; font-size: .95rem; margin: 0 0 6px; padding: 0; }
+.hint { display: block; margin: -2px 0 6px; color: var(--muted); font-size: .88rem; font-weight: 400; }
+p.hint { margin: -2px 0 10px; }
+.req { color: var(--error); font-weight: 700; }
 
-<input type=hidden name="oid" value="00D9j00000DhCo1">
-<input type=hidden name="retURL" value="https://amplarhealth.com.au/">
+input[type=text], input[type=email], input[type=tel], select, textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 12px;
+  font: inherit;
+  color: var(--ink);
+  background: #fff;
+  border: 1.5px solid var(--control-line);
+  border-radius: 6px;
+}
+textarea { resize: vertical; line-height: 1.45; }
+select {
+  appearance: none; -webkit-appearance: none;
+  padding-right: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1.5l6 6 6-6' fill='none' stroke='%2322466b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+input::placeholder { color: #8a95a3; }
+input:hover, select:hover, textarea:hover { border-color: var(--brand); }
+input:focus-visible, select:focus-visible, textarea:focus-visible,
+.choice input:focus-visible, .button:focus-visible {
+  outline: 3px solid var(--focus); outline-offset: 2px;
+}
+input:user-invalid, select:user-invalid, textarea:user-invalid { border-color: var(--error); }
 
-<!--  ----------------------------------------------------------------------  -->
-<!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
-<!--  these lines if you wish to test in debug mode.                          -->
-<!--  <input type="hidden" name="debug" value=1>                              -->
-<!--  <input type="hidden" name="debugEmail"                                  -->
-<!--  value="steven.moalaeua@medibank.com.au">                                -->
-<!--  ----------------------------------------------------------------------  -->
+fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+.group legend { margin-bottom: 8px; }
+.choice {
+  display: flex; align-items: flex-start; gap: 12px;
+  margin: 0; padding: 10px 14px;
+  font-weight: 400; font-size: 1rem; cursor: pointer;
+  border: 1.5px solid var(--line); border-radius: 6px;
+}
+.group .choice + .choice { margin-top: 8px; }
+.choice:hover { border-color: var(--brand); }
+.choice input { flex: none; width: 22px; height: 22px; margin: 1px 0 0; accent-color: var(--brand); }
+.choice:has(input:checked) { border-color: var(--brand); background: #eef3f8; }
+.field > .choice { border: 0; padding: 4px 0; background: none !important; }
 
-<label for="first_name">First Name</label><input  id="first_name" maxlength="40" name="first_name" size="20" type="text" /><br>
+section:last-of-type { border-bottom: 0; }
+.submit-row { padding-top: 24px; border-top: 1px solid var(--line); }
+.g-recaptcha { margin-bottom: 20px; max-width: 100%; overflow-x: auto; }
+.button {
+  min-height: 52px; padding: 12px 36px;
+  font: inherit; font-weight: 650; color: #fff;
+  background: var(--brand); border: 0; border-radius: 6px; cursor: pointer;
+}
+.button:hover { background: var(--brand-dark); }
 
-<label for="last_name">Last Name</label><input  id="last_name" maxlength="80" name="last_name" size="20" type="text" /><br>
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .page { padding: 20px 12px 40px; }
+  .card { padding: 4px 18px 24px; }
+  .c2, .c3 { grid-column: span 6; }
+  .masthead h1 { font-size: 1.6rem; }
+  .button { width: 100%; }
+}
 
-<label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="text" /><br>
+</style>
 
-<label for="company">Company</label><input  id="company" maxlength="40" name="company" size="20" type="text" /><br>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+ function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500);
+</script>
+</head>
+<body>
+<main class="page">
+<header class="masthead">
+  <h1>Support at Home enquiry</h1>
+  <p>Tell us a little about yourself and the support you are looking for. A member of our team will be in touch to talk through your options.</p>
+  <p class="note">Fields marked <span class="req" aria-hidden="true">*</span> are required.</p>
+</header>
 
-<label for="city">City</label><input  id="city" maxlength="40" name="city" size="20" type="text" /><br>
+<form class="card" action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&amp;orgId=00D9j00000DhCo1" method="POST">
 
-<label for="state">State/Province</label><input  id="state" maxlength="20" name="state" size="20" type="text" /><br>
+<input type="hidden" name="captcha_settings" value='{"keyname":"Google_Recaptcha_V2","fallback":"true","orgId":"00D9j00000DhCo1","ts":""}'>
+<input type="hidden" name="oid" value="00D9j00000DhCo1">
+<input type="hidden" name="retURL" value="http://">
 
-<input type="hidden"  id="lead_source" name="lead_source" value="Web" /><br>
+<!--  Optional debugging elements. Uncomment to test in debug mode.
+<input type="hidden" name="debug" value=1>
+<input type="hidden" name="debugEmail" value="steven.moalaeua@medibank.com.au">
+-->
 
-<input type="submit" name="submit">
+<input type="hidden" id="member_status" name="member_status" value="">
+
+<section><h2>About your enquiry</h2><div class="grid"><fieldset class="field c6 group"><legend>Who are you looking for support for?</legend><label class="choice"><input type="radio" name="00N9j00000QY1Ir" value="Looking for support for myself"><span>Looking for support for myself</span></label><label class="choice"><input type="radio" name="00N9j00000QY1Ir" value="Helping someone else find support"><span>Helping someone else find support</span></label></fieldset><div class="field c6"><label for="00N9j00000QY3Cb">Which best describes your situation now?</label><select id="00N9j00000QY3Cb" name="00N9j00000QY3Cb"><option value="">Please select</option><option value="Just exploring options">Just exploring options</option><option value="Would like help understanding eligibility and funding">Would like help understanding eligibility and funding</option><option value="Waiting for assessment or funding approval">Waiting for assessment or funding approval</option><option value="Funding approved and ready to start services">Funding approved and ready to start services</option><option value="Currently receiving services and considering a new provider">Currently receiving services and considering a new provider</option><option value="Not sure">Not sure</option></select></div><fieldset class="field c6 group"><legend>How will the support be funded?</legend><p class="hint">Select all that apply.</p><label class="choice"><input type="checkbox" name="00N9j00000QY2ur" value="Support at Home funding"><span>Support at Home funding</span></label><label class="choice"><input type="checkbox" name="00N9j00000QY2ur" value="Home Care Package"><span>Home Care Package</span></label><label class="choice"><input type="checkbox" name="00N9j00000QY2ur" value="Commonwealth Home Support Programme (CHSP)"><span>Commonwealth Home Support Programme (CHSP)</span></label><label class="choice"><input type="checkbox" name="00N9j00000QY2ur" value="Self-funded"><span>Self-funded</span></label><label class="choice"><input type="checkbox" name="00N9j00000QY2ur" value="Not sure"><span>Not sure</span></label></fieldset></div></section>
+<section><h2>About the person who needs support</h2><div class="grid"><div class="field c2"><label for="salutation">Title</label><select id="salutation" name="salutation"><option value="">Select</option><option value="Mr.">Mr.</option><option value="Ms.">Ms.</option><option value="Mrs.">Mrs.</option><option value="Dr.">Dr.</option><option value="Prof.">Prof.</option><option value="Mx.">Mx.</option></select></div><div class="field c2"><label for="first_name">First name</label><input id="first_name" name="first_name" type="text" maxlength="40"></div><div class="field c2"><label for="last_name">Last name <span class="req" aria-hidden="true">*</span></label><input id="last_name" name="last_name" type="text" maxlength="80" required></div><div class="field c2"><label for="00N9j00000QY9Uv">Date of birth</label><input id="00N9j00000QY9Uv" name="00N9j00000QY9Uv" type="text" placeholder="DD/MM/YYYY" inputmode="numeric"></div><div class="field c2"><label for="mobile">Mobile phone</label><input id="mobile" name="mobile" type="tel" maxlength="40"></div><div class="field c2"><label for="phone">Landline</label><input id="phone" name="phone" type="tel" maxlength="40"></div><div class="field c6"><label for="email">Email</label><input id="email" name="email" type="email" maxlength="80"></div><div class="field c6"><label for="street">Street address</label><textarea id="street" name="street" rows="2"></textarea></div><div class="field c2"><label for="city">Suburb or city</label><input id="city" name="city" type="text" maxlength="40"></div><div class="field c2"><label for="state">State</label><input id="state" name="state" type="text" maxlength="20"></div><div class="field c2"><label for="zip">Postcode</label><input id="zip" name="zip" type="text" maxlength="20" inputmode="numeric"></div><div class="field c3"><label for="country">Country</label><input id="country" name="country" type="text" maxlength="40"></div></div></section>
+<section><h2>Who should we speak to?</h2><p class="intro">If a family member, carer or representative is helping with this enquiry, add their details below. You can leave this blank if the enquiry is for yourself.</p><div class="grid"><div class="field c6"><label for="00N9j00000QY1nV">Who should we contact about this enquiry?</label><select id="00N9j00000QY1nV" name="00N9j00000QY1nV"><option value="">Please select</option><option value="The person needing support">The person needing support</option><option value="Their family member, carer or representative">Their family member, carer or representative</option><option value="Either person">Either person</option></select></div><div class="field c3"><label for="00N9j00000QY2Jl">Contact person’s first name</label><input id="00N9j00000QY2Jl" name="00N9j00000QY2Jl" type="text" maxlength="255" autocomplete="given-name"></div><div class="field c3"><label for="00N9j00000QjicD">Contact person’s last name</label><input id="00N9j00000QjicD" name="00N9j00000QjicD" type="text" maxlength="255" autocomplete="family-name"></div><div class="field c6"><label for="00N9j00000QY2Zt">Their relationship to the person needing support</label><select id="00N9j00000QY2Zt" name="00N9j00000QY2Zt"><option value="">Please select</option><option value="Spouse / Partner">Spouse / Partner</option><option value="Other family Member">Other family Member</option><option value="Friend">Friend</option><option value="Informal Carer">Informal Carer</option><option value="Guardian / Representative">Guardian / Representative</option><option value="Support Coordinator / Case Manager">Support Coordinator / Case Manager</option><option value="Health Professional">Health Professional</option><option value="Other">Other</option></select></div><div class="field c3"><label for="00N9j00000QY0lc">Contact person’s phone</label><input id="00N9j00000QY0lc" name="00N9j00000QY0lc" type="tel" maxlength="40" autocomplete="tel"></div><div class="field c3"><label for="00N9j00000QXr97">Contact person’s email</label><input id="00N9j00000QXr97" name="00N9j00000QXr97" type="email" maxlength="80" autocomplete="email"></div></div></section>
+<section><h2>How and when should we call?</h2><div class="grid"><div class="field c3"><label for="00N9j00000QY3MH">Preferred contact method</label><select id="00N9j00000QY3MH" name="00N9j00000QY3MH"><option value="">Please select</option><option value="Mobile phone">Mobile phone</option><option value="Landline">Landline</option><option value="Email">Email</option></select></div><div class="field c3"><label for="00N9j00000QXx3y">Best time to contact</label><select id="00N9j00000QXx3y" name="00N9j00000QXx3y"><option value="">Please select</option><option value="Morning">Morning</option><option value="Afternoon">Afternoon</option><option value="Evening">Evening</option></select></div><div class="field c6"><label for="00N9j00000QY3HR">Anything we should know before we call?</label><textarea id="00N9j00000QY3HR" name="00N9j00000QY3HR" rows="4"></textarea></div></div></section>
+<section><h2>How did you hear about us?</h2><div class="grid"><div class="field c6"><label for="lead_source">Select the option that fits best</label><select id="lead_source" name="lead_source"><option value="">Please select</option><option value="Advertisement">Advertisement</option><option value="Customer Event">Customer Event</option><option value="Employee Referral">Employee Referral</option><option value="External Referral">External Referral</option><option value="Google AdWords">Google AdWords</option><option value="Partner">Partner</option><option value="Purchased List">Purchased List</option><option value="Trade Show">Trade Show</option><option value="Webinar">Webinar</option><option value="Website">Website</option><option value="Friend or family">Friend or family</option><option value="GP/practice nurse">GP/practice nurse</option><option value="Healthcare team">Healthcare team</option><option value="Google search">Google search</option><option value="Amplar health website​">Amplar health website</option><option value="My aged care website">My aged care website</option><option value="Email​">Email</option><option value="Social media">Social media</option><option value="Event">Event</option><option value="Hospital discharge planner/liaison">Hospital discharge planner/liaison</option><option value="Other">Other</option></select></div><div class="field c3"><label for="00N9j00000QYHKP">Other detail</label><input id="00N9j00000QYHKP" name="00N9j00000QYHKP" type="text" maxlength="255"></div><div class="field c3"><label for="00N9j00000QYIoL">Name of event</label><input id="00N9j00000QYIoL" name="00N9j00000QYIoL" type="text" maxlength="255"></div><div class="field c3"><label for="00N9j00000QYItB">Name of clinic</label><input id="00N9j00000QYItB" name="00N9j00000QYItB" type="text" maxlength="255"></div><div class="field c3"><label for="00N9j00000QYJIz">Name of channel</label><input id="00N9j00000QYJIz" name="00N9j00000QYJIz" type="text" maxlength="255"></div><div class="field c3"><label for="00N9j00000QXtgI">Name of team</label><input id="00N9j00000QXtgI" name="00N9j00000QXtgI" type="text" maxlength="255"></div></div></section>
+<section><h2>Additional contact details</h2><div class="grid"><div class="field c3"><label for="00NQE00000HVpuM">Mobile country code</label><select id="00NQE00000HVpuM" name="00NQE00000HVpuM"><option value="">Please select</option><option value="US">US</option><option value="AC">AC</option><option value="AD">AD</option><option value="AE">AE</option><option value="AF">AF</option><option value="AG">AG</option><option value="AI">AI</option><option value="AL">AL</option><option value="AM">AM</option><option value="AO">AO</option><option value="AQ">AQ</option><option value="AR">AR</option><option value="AS">AS</option><option value="AT">AT</option><option value="AU">AU</option><option value="AW">AW</option><option value="AX">AX</option><option value="AZ">AZ</option><option value="BA">BA</option><option value="BB">BB</option><option value="BD">BD</option><option value="BE">BE</option><option value="BF">BF</option><option value="BG">BG</option><option value="BH">BH</option><option value="BI">BI</option><option value="BJ">BJ</option><option value="BL">BL</option><option value="BM">BM</option><option value="BN">BN</option><option value="BO">BO</option><option value="BQ">BQ</option><option value="BR">BR</option><option value="BS">BS</option><option value="BT">BT</option><option value="BV">BV</option><option value="BW">BW</option><option value="BY">BY</option><option value="BZ">BZ</option><option value="CA">CA</option><option value="CC">CC</option><option value="CD">CD</option><option value="CF">CF</option><option value="CG">CG</option><option value="CH">CH</option><option value="CI">CI</option><option value="CK">CK</option><option value="CL">CL</option><option value="CM">CM</option><option value="CN">CN</option><option value="CO">CO</option><option value="CR">CR</option><option value="CU">CU</option><option value="CV">CV</option><option value="CW">CW</option><option value="CX">CX</option><option value="CY">CY</option><option value="CZ">CZ</option><option value="DE">DE</option><option value="DJ">DJ</option><option value="DK">DK</option><option value="DM">DM</option><option value="DO">DO</option><option value="DZ">DZ</option><option value="EC">EC</option><option value="EE">EE</option><option value="EG">EG</option><option value="ER">ER</option><option value="ES">ES</option><option value="ET">ET</option><option value="FI">FI</option><option value="FJ">FJ</option><option value="FK">FK</option><option value="FM">FM</option><option value="FO">FO</option><option value="FR">FR</option><option value="GA">GA</option><option value="GB">GB</option><option value="GD">GD</option><option value="GE">GE</option><option value="GF">GF</option><option value="GG">GG</option><option value="GH">GH</option><option value="GI">GI</option><option value="GL">GL</option><option value="GM">GM</option><option value="GN">GN</option><option value="GP">GP</option><option value="GQ">GQ</option><option value="GR">GR</option><option value="GS">GS</option><option value="GT">GT</option><option value="GU">GU</option><option value="GW">GW</option><option value="GY">GY</option><option value="HK">HK</option><option value="HM">HM</option><option value="HN">HN</option><option value="HR">HR</option><option value="HT">HT</option><option value="HU">HU</option><option value="ID">ID</option><option value="IE">IE</option><option value="IL">IL</option><option value="IM">IM</option><option value="IN">IN</option><option value="IO">IO</option><option value="IQ">IQ</option><option value="IR">IR</option><option value="IS">IS</option><option value="IT">IT</option><option value="JE">JE</option><option value="JM">JM</option><option value="JO">JO</option><option value="JP">JP</option><option value="KE">KE</option><option value="KG">KG</option><option value="KH">KH</option><option value="KI">KI</option><option value="KM">KM</option><option value="KN">KN</option><option value="KP">KP</option><option value="KR">KR</option><option value="KW">KW</option><option value="KY">KY</option><option value="KZ">KZ</option><option value="LA">LA</option><option value="LB">LB</option><option value="LC">LC</option><option value="LI">LI</option><option value="LK">LK</option><option value="LR">LR</option><option value="LS">LS</option><option value="LT">LT</option><option value="LU">LU</option><option value="LV">LV</option><option value="LY">LY</option><option value="MA">MA</option><option value="MC">MC</option><option value="MD">MD</option><option value="ME">ME</option><option value="MF">MF</option><option value="MG">MG</option><option value="MH">MH</option><option value="MK">MK</option><option value="ML">ML</option><option value="MM">MM</option><option value="MN">MN</option><option value="MO">MO</option><option value="MP">MP</option><option value="MQ">MQ</option><option value="MR">MR</option><option value="MS">MS</option><option value="MT">MT</option><option value="MU">MU</option><option value="MV">MV</option><option value="MW">MW</option><option value="MX">MX</option><option value="MY">MY</option><option value="MZ">MZ</option><option value="NA">NA</option><option value="NC">NC</option><option value="NE">NE</option><option value="NF">NF</option><option value="NG">NG</option><option value="NI">NI</option><option value="NL">NL</option><option value="NO">NO</option><option value="NP">NP</option><option value="NR">NR</option><option value="NU">NU</option><option value="NZ">NZ</option><option value="OM">OM</option><option value="PA">PA</option><option value="PE">PE</option><option value="PF">PF</option><option value="PG">PG</option><option value="PH">PH</option><option value="PK">PK</option><option value="PL">PL</option><option value="PM">PM</option><option value="PN">PN</option><option value="PR">PR</option><option value="PS">PS</option><option value="PT">PT</option><option value="PW">PW</option><option value="PY">PY</option><option value="QA">QA</option><option value="RE">RE</option><option value="RO">RO</option><option value="RS">RS</option><option value="RU">RU</option><option value="RW">RW</option><option value="SA">SA</option><option value="SB">SB</option><option value="SC">SC</option><option value="SD">SD</option><option value="SE">SE</option><option value="SG">SG</option><option value="SH">SH</option><option value="SI">SI</option><option value="SJ">SJ</option><option value="SK">SK</option><option value="SL">SL</option><option value="SM">SM</option><option value="SN">SN</option><option value="SO">SO</option><option value="SR">SR</option><option value="SS">SS</option><option value="ST">ST</option><option value="SV">SV</option><option value="SX">SX</option><option value="SY">SY</option><option value="SZ">SZ</option><option value="TA">TA</option><option value="TC">TC</option><option value="TD">TD</option><option value="TG">TG</option><option value="TH">TH</option><option value="TJ">TJ</option><option value="TK">TK</option><option value="TL">TL</option><option value="TM">TM</option><option value="TN">TN</option><option value="TO">TO</option><option value="TR">TR</option><option value="TT">TT</option><option value="TV">TV</option><option value="TW">TW</option><option value="TZ">TZ</option><option value="UA">UA</option><option value="UG">UG</option><option value="UY">UY</option><option value="UZ">UZ</option><option value="VA">VA</option><option value="VC">VC</option><option value="VE">VE</option><option value="VG">VG</option><option value="VI">VI</option><option value="VN">VN</option><option value="VU">VU</option><option value="WF">WF</option><option value="WS">WS</option><option value="YE">YE</option><option value="YT">YT</option><option value="ZA">ZA</option><option value="ZM">ZM</option><option value="ZW">ZW</option></select></div><div class="field c3"><label for="fax">Fax</label><input id="fax" name="fax" type="tel" maxlength="40"></div><div class="field c6"><label for="url">Website</label><input id="url" name="url" type="text" maxlength="80"></div><div class="field c6"><label for="description">Description</label><textarea id="description" name="description" rows="4"></textarea></div></div></section>
+<section><h2>Organisation details</h2><div class="grid"><div class="field c3"><label for="company">Company</label><input id="company" name="company" type="text" maxlength="40"></div><div class="field c3"><label for="title">Job title</label><input id="title" name="title" type="text" maxlength="40"></div><div class="field c2"><label for="industry">Industry</label><select id="industry" name="industry"><option value="">Please select</option><option value="Agriculture">Agriculture</option><option value="Apparel">Apparel</option><option value="Banking">Banking</option><option value="Biotechnology">Biotechnology</option><option value="Chemicals">Chemicals</option><option value="Communications">Communications</option><option value="Construction">Construction</option><option value="Consulting">Consulting</option><option value="Education">Education</option><option value="Electronics">Electronics</option><option value="Energy">Energy</option><option value="Engineering">Engineering</option><option value="Entertainment">Entertainment</option><option value="Environmental">Environmental</option><option value="Finance">Finance</option><option value="Food &amp; Beverage">Food &amp; Beverage</option><option value="Government">Government</option><option value="Healthcare">Healthcare</option><option value="Hospitality">Hospitality</option><option value="Insurance">Insurance</option><option value="Machinery">Machinery</option><option value="Manufacturing">Manufacturing</option><option value="Media">Media</option><option value="Not For Profit">Not For Profit</option><option value="Other">Other</option><option value="Recreation">Recreation</option><option value="Retail">Retail</option><option value="Shipping">Shipping</option><option value="Technology">Technology</option><option value="Telecommunications">Telecommunications</option><option value="Transportation">Transportation</option><option value="Utilities">Utilities</option></select></div><div class="field c2"><label for="revenue">Annual revenue</label><input id="revenue" name="revenue" type="text"></div><div class="field c2"><label for="employees">Employees</label><input id="employees" name="employees" type="text" inputmode="numeric"></div></div></section>
+<section><h2>Referrer details</h2><p class="intro">Complete this section if someone referred you.</p><div class="grid"><div class="field c3"><label for="00N9j00000QY9xx">Referrer name</label><input id="00N9j00000QY9xx" name="00N9j00000QY9xx" type="text" maxlength="255"></div><div class="field c3"><label for="00N9j00000QYBQH">Referrer role</label><input id="00N9j00000QYBQH" name="00N9j00000QYBQH" type="text" maxlength="255"></div><div class="field c6"><label for="00N9j00000QY0Y7">Referrer organisation or service</label><input id="00N9j00000QY0Y7" name="00N9j00000QY0Y7" type="text" maxlength="255"></div><div class="field c3"><label for="00N9j00000QXtl8">Referrer email</label><input id="00N9j00000QXtl8" name="00N9j00000QXtl8" type="email" maxlength="80"></div><div class="field c3"><label for="00N9j00000QYH13">Referrer phone number</label><input id="00N9j00000QYH13" name="00N9j00000QYH13" type="tel" maxlength="40"></div></div></section>
+<section><h2>Record details</h2><div class="grid"><div class="field c3"><label for="recordType">Lead record type</label><select id="recordType" name="recordType"><option value="">Please select</option><option value="0129j000004oj2r">Support at Home</option></select></div><div class="field c3"><label for="00N9j00000Qhjm5">Source</label><select id="00N9j00000Qhjm5" name="00N9j00000Qhjm5"><option value="">Please select</option><option value="Health Professional">Health Professional</option><option value="EOI">EOI</option></select></div><div class="field c3"><label for="rating">Rating</label><select id="rating" name="rating"><option value="">Please select</option><option value="Hot">Hot</option><option value="Warm">Warm</option><option value="Cold">Cold</option></select></div><div class="field c3"><label for="Campaign_ID">Campaign</label><select id="Campaign_ID" name="Campaign_ID"><option value="">Please select</option></select></div><div class="field c6"><label class="choice"><input type="checkbox" id="00N9j00000RFte9" name="00N9j00000RFte9" value="1"><span>Conversion failed</span></label></div></div></section>
+<section><h2>Consent</h2><div class="grid"><div class="field c6"><label class="choice"><input type="checkbox" id="00N9j00000QXYTY" name="00N9j00000QXYTY" value="1" required><span>I agree to my information being collected and used to respond to this enquiry. <span class="req" aria-hidden="true">*</span></span></label></div><div class="field c6"><label class="choice"><input type="checkbox" id="00N9j00000QY7g1" name="00N9j00000QY7g1" value="1"><span>I’d like to receive news and information about services.</span></label></div><div class="field c6"><label class="choice"><input type="checkbox" id="00N9j00000QY7o5" name="00N9j00000QY7o5" value="1"><span>Privacy consent (health professional)</span></label></div><div class="field c6"><label class="choice"><input type="checkbox" id="emailOptOut" name="emailOptOut" value="1"><span>Email opt out</span></label></div><div class="field c6"><label class="choice"><input type="checkbox" id="faxOptOut" name="faxOptOut" value="1"><span>Fax opt out</span></label></div><div class="field c6"><label class="choice"><input type="checkbox" id="doNotCall" name="doNotCall" value="1"><span>Do not call</span></label></div><div class="field c6"><label class="choice"><input type="checkbox" id="00NQE00000HVpxI" name="00NQE00000HVpxI" value="1"><span>Mobile opt out</span></label></div></div></section>
+
+<div class="submit-row">
+  <div class="g-recaptcha" data-sitekey="6Lc-G1whAAAAAEz7BDyVJtVeuP8Nviie09bQgrMU"></div>
+  <input class="button" type="submit" name="submit" value="Send enquiry">
+</div>
 
 </form>
+</main>
+</body>
+</html>
